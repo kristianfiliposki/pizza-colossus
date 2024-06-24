@@ -1,0 +1,36 @@
+<section>
+  <div id="box">
+    <div>Crea la tua pizza: Scegli il tuo chef e la sua migliore pizza!</div>
+
+
+    <div id="wrapper-operators">
+      @for (operatore of operatori; track operatore.id) {
+        <app-operatore [operatore]="operatore" (select)="putdati($event)"  [vincitore]="lista"/>
+      }
+    </div>
+
+      @if (dato) {
+        <div id="super-box">
+          @for (pizza of dato; track pizza.id) {
+            <div class="wrapper">
+              <div class="pizza-box">
+                {{pizza.nome}}
+              </div>
+              <div class="subtitle">Ecco a voi tutti gli ingredienti:</div>
+              <div>
+                @for (ingrediente of dato[pizza.id].ingredienti; track ingrediente) {
+                  <div class="ingrediente">
+                    {{ingrediente}}
+                  </div>
+                }
+
+              </div>
+            </div>
+          }
+        </div>
+      }
+      @else {
+        <div id="nome-operatore">Scegli il tuo Chef preferito!</div>
+      }
+    </div>
+</section>
