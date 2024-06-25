@@ -1,14 +1,23 @@
-<section>
+<section >
+  <!-- box -->
   <div id="box">
+    <!-- title -->
     <div>Crea la tua pizza: Scegli il tuo chef e la sua migliore pizza!</div>
 
+    <!-- pizza-make-button -->
+    <button (click)="visiblee()" class="btn" ><h2>Crea tu, la tua pizza</h2></button>
+    <!-- hidden-box -->
+    <app-over-box class="visible visible.active" [selected]="visible"  [class.active]="visible" (cancel)="cancel($event)"/>
 
+
+    <!-- lista dei chef -->
     <div id="wrapper-operators">
       @for (operatore of operatori; track operatore.id) {
-        <app-operatore [operatore]="operatore" (select)="putdati($event)"  [vincitore]="lista"/>
+        <app-operatore [operatore]="operatore" (select)="putdati($event)" />
       }
     </div>
 
+    <!-- pizze -->
       @if (dato) {
         <div id="super-box">
           @for (pizza of dato; track pizza.id) {

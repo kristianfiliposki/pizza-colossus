@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { MainComponent } from '../main/main.component';
-import { chefs } from '../../chefs';
 
 @Component({
   selector: 'app-body',
@@ -16,5 +15,4 @@ import { chefs } from '../../chefs';
 export class AppComponent {
   title = 'pizza-colossus';
 
-  chef= chefs;
 }

@@ -1,0 +1,43 @@
+<section>
+  <form (ngSubmit)="invio()">
+    <!-- title -->
+      <h1>Crea la tua pizza</h1>
+
+      <!-- crea la pizza -->
+      <div>
+        <label for="nome">Scegli il nome alla tua pizza</label>
+        <input class="btn" type="text" placeholder="nome" id="nome" name="nome">
+      </div>
+
+      <div>
+        <p>il tuo prezzo è di {{prezzo}} € </p>
+      </div>
+      <!-- ingredienti -->
+
+     <div>
+        <label for="nome">Scegli tuoi ingredienti</label>
+        <div>
+          <div><input type="checkbox">salame</div>
+          <div><input type="checkbox">mozzarella</div>
+          <div><input type="checkbox">sugo</div>
+          <div><input type="checkbox">rucola</div>
+          <div><input type="checkbox">prosciutto crudo</div>
+          <div><input type="checkbox">prosciutto cotto</div>
+          <div><input type="checkbox">lonza</div>
+          <div><input type="checkbox">funghi</div>
+          <div><input type="checkbox">gorgonzola</div>
+          <div><input type="checkbox">tonno</div>
+          <div><input type="checkbox">friarelli</div>
+          <div><input type="checkbox">patatine</div>
+          <div><input type="checkbox">wrutel</div>
+          <div><input type="checkbox">salciccia</div>
+
+        </div>
+      </div>
+
+      <!-- submit/cancel -->
+      <button class="btn" type="submit" (click)="invio()">Crea la tua pizza</button>
+      <button class="btn" (click)="Oncancel()" >Cancel</button>
+
+  </form>
+</section>

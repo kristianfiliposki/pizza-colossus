@@ -90,3 +90,35 @@ app-operatore{
   color: lightskyblue !important;
   font-size: 1.5em !important;
 }
+
+.btn{
+  margin-top: 2em;
+  border-radius: 1em;
+  padding: 1.2em;
+  background-color: lightcyan;
+  color: #FFA62F;
+  font-weight: 900;
+  border: 3px solid #FFA62F;
+
+}
+
+app-over-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 60vw;
+  border-radius: 2em;
+  height: 80vh;
+  border: 3px solid black;
+  z-index: 99999;
+  position: absolute;
+  top: 7em;
+  background-color:orange;
+  color: white;
+}
+
+
+.visible.active{
+display: none;
+}

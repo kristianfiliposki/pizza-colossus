@@ -1,45 +1,25 @@
 import { chefs } from '../../chefs';
 import { Component} from '@angular/core';
+import { OverBoxComponent } from '../over-box/over-box.component';
 import { OperatoreComponent } from '../operatore/operatore.component';
-
-interface User
-{
-  id : number;
-  nome: string;
-  anni: number;
-  prezzo: number;
-  pizze: pizza;
-}
-
-interface pizza
-{
-  nome: string,
-  prezzo: number,
-  ingredienti:string[],
-}
-
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
     OperatoreComponent,
+    OverBoxComponent,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-  lista = [
-    "luigi",
-    "franco",
-    "sandro",
-    "giulio",
-  ]
+  operatori = chefs;
 
- operatori = chefs;
+  visible ?: boolean = true;
+
+
 
   dato ?: any;
-
-
 
   putdati(value: any) {
     console.log(value.pizze);
@@ -47,8 +27,12 @@ export class MainComponent {
     return this.dato;
   }
 
+  visiblee(){
+    this.visible= false;
+    console.log(this.visible)
+}
 
-
-
-
+  cancel(value:boolean){
+    this.visible=value;
+  }
 }
