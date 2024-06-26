@@ -3,7 +3,7 @@ export interface user{
     nome: string;
     anni: number;
     prezzo: number;
-    pizze: pizza
+    pizze: pizza[]
 }
 
 export interface pizza

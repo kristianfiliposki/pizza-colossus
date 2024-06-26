@@ -7,7 +7,7 @@
     <!-- pizza-make-button -->
     <button (click)="visiblee()" class="btn" ><h2>Crea tu, la tua pizza</h2></button>
     <!-- hidden-box -->
-    <app-over-box class="visible visible.active" [selected]="visible"  [class.active]="visible" (cancel)="cancel($event)"/>
+    <app-over-box class="visible visible.active" [selected]="visible"  [class.active]="visible" (cancel)="cancel($event)" (add)="add($event)"/>
 
 
     <!-- lista dei chef -->
@@ -16,10 +16,31 @@
         <app-operatore [operatore]="operatore" (select)="putdati($event)" />
       }
     </div>
+    @if (!(pizza.nome=="" ) && !(pizza.ingredienti.length <= 1  ) ) {
+      <div class="pizza-box">
+        @if (!(pizza.nome=="") ) {
+          <h1>la tua pizza è: {{pizza.nome}}</h1>
+        }
+
+        <div id="prezzo">
+          @if (!(pizza.prezzo==0) ) {
+           <p>la tua pizza costa: {{pizza.prezzo}} €</p>
+          }
+        </div>
+
+        <div class="">
+          @if (!(pizza.ingredienti.length==0) ) {
+            <h2 class="subtitle">La pizza perfetta è composta da: {{pizza.ingredienti}}</h2>
+          }
+        </div>
+      </div>
+
+    }
+
 
     <!-- pizze -->
       @if (dato) {
-        <div id="super-box">
+        <div class="super-box">
           @for (pizza of dato; track pizza.id) {
             <div class="wrapper">
               <div class="pizza-box">

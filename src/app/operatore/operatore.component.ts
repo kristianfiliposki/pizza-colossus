@@ -1,4 +1,5 @@
 import { Component , Input, Output, EventEmitter, computed,signal} from '@angular/core';
+import { user } from '../../interfaces';
 
 @Component({
   selector: 'app-operatore',
@@ -11,13 +12,13 @@ import { Component , Input, Output, EventEmitter, computed,signal} from '@angula
 
 export class OperatoreComponent {
   /* input */
-  @Input() operatore ?: any;
+  @Input() operatore ?: user;
   /* output */
   @Output() select = new EventEmitter<boolean>();
 
 
   prendidati(){
-    console.log(this.operatore.nome)
-    this.select.emit(this.operatore);
+    console.log(this.operatore!.nome)
+    this.select.emit(!this.operatore);
   }
 }

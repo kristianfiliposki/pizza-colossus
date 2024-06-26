@@ -1,4 +1,5 @@
-export const chefs=[
+import { user } from "./interfaces";
+export const chefs: user[] =[
   {
     id:0,
     nome:"Carlos",

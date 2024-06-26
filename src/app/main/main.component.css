@@ -73,7 +73,7 @@ app-operatore{
   margin: 0 1.2em;
 }
 
-#super-box{
+.super-box{
   display: flex;
   flex-direction: column;
   justify-content: center;

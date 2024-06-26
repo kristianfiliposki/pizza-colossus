@@ -1,26 +1,60 @@
-import { FormsModule } from '@angular/forms';
+import { pizza } from '../../interfaces';
 import { Component, Input, Output ,EventEmitter} from '@angular/core';
 
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-over-box',
   standalone: true,
-  imports: [FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+  ],
   templateUrl: './over-box.component.html',
   styleUrl: './over-box.component.css'
 })
 export class OverBoxComponent {
-  titolo:string = "";
-  prezzo:number =13;
 
 
 
   @Input() selected ?: boolean;
   @Output() cancel= new EventEmitter();
-  @Output() add = new EventEmitter<{
-    titolo:string;
-    prezzo:number;
-  }>();
+  @Output() add = new EventEmitter<pizza>();
+
+  ingredient: string="";
+  ingredienti: string[]=[
+    "sugo",
+    "mozzarella",
+    "salsiccia",
+    "salame",
+    "peperoni",
+    "mortadella",
+    "alici",
+    "patate",
+    "Gorgonzola",
+    "basilico",
+
+  ];
+
+
+  prezzofinale:number=0;
+  enteredId=0;
+  enteredNome='';
+  enteredPrezzo=10;
+  enteredIngredienti: string[]=[];
+
+  calc(){
+   this.prezzofinale= (10 * this.enteredIngredienti.length);
+   return this.prezzofinale;
+
+  }
+
+  addIngredients(element:string) {
+    this.ingredient=element;
+    this.enteredIngredienti.push(this.ingredient)
+    console.log(this.enteredIngredienti)
+  }
 
 
   visiblee(){
@@ -35,8 +69,10 @@ export class OverBoxComponent {
 
   invio(){
     this.add.emit({
-      titolo: this.titolo,
-      prezzo: this.prezzo,
+      id:this.enteredId,
+      nome:this.enteredNome,
+      prezzo:this.calc(),
+      ingredienti:this.enteredIngredienti,
     })
   }
 
