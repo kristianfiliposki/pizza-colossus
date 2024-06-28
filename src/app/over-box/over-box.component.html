@@ -1,12 +1,12 @@
 <section>
-  <form (ngSubmit)="invio()">
+  <form >
     <!-- title -->
       <h1>Crea la tua pizza</h1>
 
       <!-- crea la pizza -->
       <div>
         <label for="nome">Scegli il nome alla tua pizza</label>
-        <input class="btn" type="text" placeholder="nome" [(ngModel)]="enteredNome" id="nome" name="nome">
+        <input required class="btn" type="text" placeholder="nome" [(ngModel)]="enteredNome" id="nome" name="nome" >
       </div>
 
       <div>

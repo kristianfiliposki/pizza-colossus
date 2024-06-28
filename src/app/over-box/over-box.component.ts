@@ -1,5 +1,6 @@
 import { pizza } from '../../interfaces';
-import { Component, Input, Output ,EventEmitter} from '@angular/core';
+import { Component, Input, Output ,EventEmitter,inject} from '@angular/core';
+
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,8 +16,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './over-box.component.css'
 })
 export class OverBoxComponent {
-
-
 
   @Input() selected ?: boolean;
   @Output() cancel= new EventEmitter();
@@ -68,6 +67,7 @@ export class OverBoxComponent {
   }
 
   invio(){
+    console.log("invio")
     this.add.emit({
       id:this.enteredId,
       nome:this.enteredNome,

@@ -2,7 +2,9 @@ import { chefs } from '../../chefs';
 import { Component} from '@angular/core';
 import { OverBoxComponent } from '../over-box/over-box.component';
 import { OperatoreComponent } from '../operatore/operatore.component';
-import { type pizza } from '../../interfaces';
+import { user, type pizza } from '../../interfaces';
+import { json } from 'stream/consumers';
+import { MakepizzaService } from '../makepizza.service';
 @Component({
   selector: 'app-main',
   standalone: true,
@@ -14,45 +16,70 @@ import { type pizza } from '../../interfaces';
   styleUrl: './main.component.css'
 })
 export class MainComponent {
+  /* questi sono tutti i chef che lavorano per la nostra compagnia */
+  public operatori = chefs;
 
-  pizza : pizza ={
-    id:0,
-    nome:"",
-    ingredienti:[],
-    prezzo:0,
-  };
-
-  operatori = chefs;
-
-  visible ?: boolean = true;
-
-  dato ?: any;
-
-  putdati(value: any) {
-    console.log(value.pizze);
-    this.dato = value.pizze;
-    return this.dato;
+  constructor(private MakepizzaService: MakepizzaService) {
   }
 
+  listapizze=this.MakepizzaService.ListaDaAggiornare
+  pizza = this.MakepizzaService.pizza;
+  /* questo è il dato che conterrà la pizza dell'utente */
+
+
+  /* Prende i dati sparati dal form che crea la pizza */
+  add(value:pizza){
+    this.MakepizzaService.aggiungiPizza(value);
+    this.visible=true;
+  }
+
+
+  /* mostra se il form è visibile o meno */
+  visible ?: boolean = true;
+
+  /* prende il booleano sparato da over-box, che permetterà di rendere visibile la finestra di creazione pizza */
   visiblee(){
     this.visible= false;
     console.log(this.visible)
-}
+  }
 
+  /* prende il booleano sparato da over-box, che permetterà di NON rendere visibile la finestra di creazione pizza */
   cancel(value:boolean){
     this.visible=value;
   }
 
-  add(value:pizza){
-    this.pizza={
-      id:0,
-      nome:value.nome,
-      prezzo:value.prezzo,
-      ingredienti:value.ingredienti,
-    };
-    this.visible=true;
-    console.log(this.pizza)
-  }
 
+/* ----- ----- ----- ----- pizze dei chef ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+
+
+  /* istanzio il dato delle pizze relazionate ai chef  */
+/*   dato ?: pizza[];
+ */
+  /* prende i dati sparati da OperatoreComponent. Per fornire le pizze degli operatori. */
+/*   putdati(value: user) {
+    console.log(value.pizze);
+    this.dato = value.pizze;
+    return this.dato;
+  }
+ */
+/* ----- ----- ----- ----- pizze dei chef ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+
+
+/* local storage */
+
+/*    savePizza() {
+    localStorage.setItem('pizza', JSON.stringify(this.pizza()));
+  } */
+
+/*   constructor() {
+    this.savePizza();
+    const pizza = localStorage.getItem('pizza');
+    if (pizza) {
+      this.pizza = JSON.parse(pizza);
+    }
+  } */
 
 }
+
+
+
